@@ -1,0 +1,144 @@
+<script>
+    var tree = {
+    "id": 0,
+    "name": "root",
+    "left": {
+        "id": 1,
+        "name": "Simon",
+        "left": {
+            "id": 3,
+            "name": "Carl",
+            "left": {
+                "id": 7,
+                "name": "Lee",
+                "left": {
+                    "id": 11,
+                    "name": "Fate"
+                }
+            },
+            "right": {
+                "id": 8,
+                "name": "Annie",
+                "left": {
+                    "id": 12,
+                    "name": "Saber"
+                }
+            }
+        },
+        "right": {
+            "id": 4,
+            "name": "Tony",
+            "left": {
+                "id": 9,
+                "name": "Candy"
+            }
+        }
+    },
+    "right": {
+        "id": 2,
+        "name": "right",
+        "left": {
+            "id": 5,
+            "name": "Carl",
+        },
+        "right": {
+            "id": 6,
+            "name": "Carl",
+            "right": {
+                "id": 10,
+                "name": "Kai"
+            }        
+        }
+    }
+}
+
+// 假设id和name均不会重复，根据输入name找到对应的id
+//var findname=document.getElementsByName("root")
+//var findid=document.getElementById("1")
+//这玩意儿不跟js玩
+function findIdByName(obj,name) {
+    function forjob(obj){//这里又定义了一个函数.用于遍历工作
+        var x;
+        
+        for(x in obj){//开始遍历
+            
+            if(typeof(obj[x]) =="object"){
+                forjob(obj[x])
+            }//判断遍历到的object[x]是不是一个对象,如果是就深入对其再执行一次遍历函数,这样就能把所有的对象遍历一次
+            else if(obj[x] == name){          
+            console.log(name+"对应的id为"+obj.id)
+            }//这里是判断遍历到的是不是一个需要的      
+        }
+    }
+
+    forjob(obj)
+}
+
+
+
+// 假设id和name均不会重复，根据输入id找到对应的name
+function findNameById(id,obj) {
+    forjob(obj)
+    function forjob(obj){
+    var x;
+    for(x in obj){
+        if(typeof(obj[x]) == "object"){
+            forjob(obj[x])
+        }
+        else if(obj[x] == id){
+            console.log(id+"对应的name为"+obj.name)
+        }
+
+    }
+}
+
+}
+
+// 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+function getListWithDLR() {
+    forjob(tree)
+    
+    function forjob(obj){
+        console.log(obj.name)//开始遍序前输出自己名字.
+        var x;
+        for(x in obj){
+            if(typeof(obj[x]) == "object"){
+                forjob(obj[x])
+            }//它会自动的在找到第一个对象的时候再遍序,而后自动循环直到左左左走完
+
+        }
+    }
+
+}
+
+// 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+function getListWithLDR(obj) {
+    forjob(tree)
+    
+    function forjob(obj){//开始遍序前输出自己名字.
+        if(obj.left){
+            forjob(obj.left)
+        };
+        console.log(obj.name);
+        if(obj.right){
+            forjob(obj.right)
+        };
+    }
+
+}
+
+// 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+function getListWithLRD() {forjob(tree)
+    forjob(tree)
+    function forjob(obj){//开始遍序前输出自己名字.
+        if(obj.left){
+            forjob(obj.left)
+        };
+        if(obj.right){
+            forjob(obj.right)
+        };
+        console.log(obj.name);
+    }
+
+}
+</script>
