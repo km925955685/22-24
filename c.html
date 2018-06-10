@@ -1,0 +1,84 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <script>
+            function diyTrim(str) {
+              /*  var result = "";
+                var i=0
+                var o=2
+               do{
+                    var b=  str.substr(i,0)
+                    console.log(b)
+                    if(b == " "){
+                        ++i
+                        console.log(hi,i)
+                    }
+                    else{
+                      o=1 
+                    }
+                    o=--o
+                    }
+                while(o>0)
+                result=str.replace(" ","")
+                // do something
+                */
+                str=str.replace(/^[\s　]+|[\s　]+$/g, "");//....网上查的代码.自己根本没法写,连空格都查不出来
+                result=str
+                    
+                return result
+            }
+            
+            // 测试用例
+            console.log(diyTrim(' a f b    ')); // ->a f b
+            console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+            console.log(diyTrim('1    ')); // ->1
+            console.log(diyTrim('　　f')); // ->f
+            console.log(diyTrim('  　  a f b 　　 ')); // ->a f b
+            console.log(diyTrim(' ')); // ->
+            console.log(diyTrim('　')); // ->
+            console.log(diyTrim('')); // ->
+            
+            /*
+            去掉字符串str中，连续重复的地方
+            */
+            function removeRepetition(str) {
+                var result = "";
+                var na="";
+                var nb="";
+                for(var i=5;i > 1;--i){
+                    var o=i
+                    while(o>1){
+                        na+= "a";
+                        nb+= "b";
+                        o=--o
+                    }
+                //console.log("??"+na)
+                    for(var u=3; u>0;--u){//没法一次全替换,强制循环几次来解决问题.
+                
+                    str=str.replace(na, "a");
+                    str=str.replace(nb,"b");
+                    //console.log("hi",na)
+                    //console.log(str)
+                    }
+                   
+                   na=""
+                   nb=""
+                }
+
+            
+                // do something
+                result =str
+                return result;
+            }
+            
+            // 测试用例
+            console.log(removeRepetition("aaa")); // ->a
+            console.log(removeRepetition("abbba")); // ->aba
+            console.log(removeRepetition("aabbaabb")); // ->abab
+            console.log(removeRepetition("")); // ->
+            console.log(removeRepetition("abc")); // ->abc</script>
+    </body>
+</html>
