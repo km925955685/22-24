@@ -22,7 +22,7 @@
         var target =ev.target;
         switch(target.id){
             case"push-btn":
-            stack.push(input)
+            stack.unshift(input)
             number = ++number
 
             break;
@@ -30,7 +30,7 @@
             
             case"pop-btn":
             if(number>=0){
-                stack.pop()
+                stack.shift()
             number = --number
             }
             else{alert("栈已空")}
@@ -38,7 +38,7 @@
             
             
             case"font-btn":
-            if(number>=0){alert(stack[number])}
+            if(number>=0){alert(stack[0])}
             else{alert("栈顶空")}
             break;
             
@@ -52,7 +52,7 @@
             }
             break;
         }
-        cont.innerHTML="队列内容："+ stack.join(" -&gt; ")
+        cont.innerHTML="队列内容："+ stack.join("-<")
 
     })
 

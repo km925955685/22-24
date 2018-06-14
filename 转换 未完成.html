@@ -1,0 +1,73 @@
+<script>
+//对象转为数组：
+var scoreObject = {
+    "Tony": {
+        "Math": 95,
+        "English": 79,
+        "Music": 68
+    }, 
+    "Simon": {
+        "Math": 100,
+        "English": 95,
+        "Music": 98
+    }, 
+    "Annie": {
+        "Math": 54,
+        "English": 65,
+        "Music": 88
+    }
+}
+
+for(x in scoreObject){
+   var arr = []
+    //console.log(x) 神一般的奇迹,x竟然是二维组的高维..
+    arr.push(x)//这个用于获取高纬名字
+    for(y in scoreObject[x]){
+        arr.push(scoreObject[x][y])//遍历把低纬的数全加进去
+    }
+    scoreObject[x] = arr//这个就是合并好的将他赋回去
+    //console.log(arr)
+    //console.log(scoreObject[x])
+    //console.log(scoreObject)
+
+    }
+    console.log(scoreObject)
+
+//数组转为对象：
+var menuArr = [
+    [1, "Area1", -1],
+    [2, "Area2", -1],
+    [3, "Area1-1", 1],
+    [4, "Area1-2", 1],
+    [5, "Area2-1", 2],
+    [6, "Area2-2", 2],
+    [7, "Area1-2-3", 4],
+    [8, "Area2-2-1", 6],
+];
+var obj={};
+var y;
+for(x in menuArr){
+    /*for(y in menuArr[x]){
+        console.log( menuArr[x][y])
+    }*/
+    //console.log(menuArr[x])
+    //console.log(menuArr[x][2])
+    if(menuArr[x][2] < 0){     
+        var nobj=[];
+       obj[menuArr[x][0]].nobj["name"]= menuArr[x][1]
+       
+       //console.log(c)
+       
+    }
+}
+function givename(){
+    var nobj=[];
+    nobj["name"] = menuArr[x][1]
+    console.log(nobj)
+
+}
+console.log(obj)
+//function area(){ 
+
+
+</script>
